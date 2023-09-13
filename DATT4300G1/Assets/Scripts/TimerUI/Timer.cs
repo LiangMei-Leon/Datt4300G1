@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    private SceneSquence sceneManager;
     private Slider slider;
     private float time = 0f;
-    
     public float startingTime = 10f;
 
 //==============================================================
    
     void Start()
     {
+        sceneManager = GameObject.FindWithTag("SceneManager").GetComponent<SceneSquence>();
+
         slider = GetComponent<Slider>();
         slider.maxValue = startingTime;
         time = startingTime;
@@ -37,8 +39,9 @@ public class Timer : MonoBehaviour
         }
         else if(time <= 0)
         {
-            //Time UP Condition
-            Debug.Log("Time is Up");
+            time = startingTime;
+            slider.value = time;
+            sceneManager.NextScene();
         }
     }
 }

@@ -31,26 +31,35 @@ public class SceneControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("q")){
+        if (Input.GetKeyDown("q"))
+        {
             StartScene();
         }
 
-        if(Input.GetKeyDown("e")){
+        if (Input.GetKeyDown("e"))
+        {
             EndScene();
         }
     }
 
     public void StartScene()
     {
-        foreach (GameObject child in translationObjectsList)
+        if (translationObjectsList.Count != 0)
         {
-            SceneElements childBehaviour = child.GetComponent<SceneElements>();
-            childBehaviour.MoveIn = true;
+            foreach (GameObject child in translationObjectsList)
+            {
+                SceneElements childBehaviour = child.GetComponent<SceneElements>();
+                childBehaviour.MoveIn = true;
+            }
         }
-        foreach (GameObject child in rotationObjectsList)
+
+        if (rotationObjectsList.Count != 0)
         {
-            SceneElements childBehaviour = child.GetComponent<SceneElements>();
-            childBehaviour.RotateIn = true;
+            foreach (GameObject child in rotationObjectsList)
+            {
+                SceneElements childBehaviour = child.GetComponent<SceneElements>();
+                childBehaviour.RotateIn = true;
+            }
         }
     }
 
