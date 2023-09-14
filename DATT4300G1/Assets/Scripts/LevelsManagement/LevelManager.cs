@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneSquence : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    public int numOfScenes;
+    private int numOfScenes;
+    public float freezeTimeBetweenScenes = 2f;
     private int currentSceneIndex = 0;
     private List<GameObject> SceneList = new List<GameObject>();
+    private Timer timer;
     // Start is called before the first frame update
     void Start()
     {
+        timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
+
         Transform[] childArray = this.GetComponentsInChildren<Transform>(true);
         foreach (Transform child in childArray)
         {
@@ -17,12 +21,11 @@ public class SceneSquence : MonoBehaviour
             {
                 if (child.parent == this.transform)
                 {
-                    Debug.Log("child.name");
                     SceneList.Add(child.gameObject);
                 }
             }
         }
-
+        numOfScenes = SceneList.Count;
         // foreach (GameObject child in SceneList)
         // {
         //     Debug.Log(child.name);
@@ -34,21 +37,29 @@ public class SceneSquence : MonoBehaviour
     {
         if (Input.GetKeyDown("f"))
         {
-            if (currentSceneIndex != 0)
-                CloseScene(currentSceneIndex - 1);
-
-            PlayScene(currentSceneIndex);
-            currentSceneIndex++;
+            timer.skipSlider(1f);
         }
     }
 
-    public void NextScene()
+    public IEnumerator NextScene()
     {
-        if (currentSceneIndex != 0)
-            CloseScene(currentSceneIndex - 1);
+        if (currentSceneIndex < numOfScenes)
+        {
+            if (currentSceneIndex != 0)
+            {
+                CloseScene(currentSceneIndex - 1);
+                yield return new WaitForSeconds(freezeTimeBetweenScenes);
+            }
 
-        PlayScene(currentSceneIndex);
-        currentSceneIndex++;
+            timer.freeze = false;
+            timer.duration = getDurationOfScene(currentSceneIndex);
+            timer.setSlider(timer.duration);
+            PlayScene(currentSceneIndex);
+            currentSceneIndex++;
+        }else{
+            Debug.Log("No more regular scene left...");
+        }
+
     }
     public void PlayScene(int index)
     {
@@ -60,5 +71,10 @@ public class SceneSquence : MonoBehaviour
     {
         SceneControl sceneControl = SceneList[index].GetComponent<SceneControl>();
         sceneControl.EndScene();
+    }
+
+    private float getDurationOfScene(int index){
+        SceneControl sceneControl = SceneList[index].GetComponent<SceneControl>();
+        return sceneControl.myDuration;
     }
 }

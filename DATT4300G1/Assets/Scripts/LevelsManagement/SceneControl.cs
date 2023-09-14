@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SceneControl : MonoBehaviour
 {
+    public float myDuration = 30f;
     private List<GameObject> translationObjectsList = new List<GameObject>();
     private List<GameObject> rotationObjectsList = new List<GameObject>();
 
@@ -31,15 +32,15 @@ public class SceneControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("q"))
-        {
-            StartScene();
-        }
+        // if (Input.GetKeyDown("q"))
+        // {
+        //     StartScene();
+        // }
 
-        if (Input.GetKeyDown("e"))
-        {
-            EndScene();
-        }
+        // if (Input.GetKeyDown("e"))
+        // {
+        //     EndScene();
+        // }
     }
 
     public void StartScene()

@@ -5,20 +5,22 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private SceneSquence sceneManager;
+    private LevelManager levelManager;
     private Slider slider;
     private float time = 0f;
-    public float startingTime = 10f;
+    public float duration = 10f;
+
+    public bool freeze = false;
 
 //==============================================================
    
     void Start()
     {
-        sceneManager = GameObject.FindWithTag("SceneManager").GetComponent<SceneSquence>();
+        levelManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
 
         slider = GetComponent<Slider>();
-        slider.maxValue = startingTime;
-        time = startingTime;
+        slider.maxValue = duration;
+        time = duration;
     }
 
     // Update is called once per frame
@@ -32,16 +34,26 @@ public class Timer : MonoBehaviour
 
     void TimeDown()
     {
-        if(time > 0)
+        if(time > 0 && !freeze)
         {
             time -= Time.deltaTime;
             slider.value = time;
         }
-        else if(time <= 0)
+        else if(time < 0)
         {
-            time = startingTime;
-            slider.value = time;
-            sceneManager.NextScene();
+            freeze = true;
+            time = 0;
+            levelManager.StartCoroutine(levelManager.NextScene());
         }
+    }
+
+    public void setSlider(float t){
+        time = t;
+        slider.maxValue = t;
+    }
+
+    public void skipSlider(float t){
+        time = t;
+        slider.value = t;
     }
 }
