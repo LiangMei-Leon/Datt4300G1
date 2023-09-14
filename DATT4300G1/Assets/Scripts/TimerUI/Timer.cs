@@ -16,7 +16,11 @@ public class Timer : MonoBehaviour
    
     void Start()
     {
-        levelManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+        if(GameObject.FindWithTag("LevelManager") != null)
+        {
+            levelManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+        }
+       
 
         slider = GetComponent<Slider>();
         slider.maxValue = duration;
