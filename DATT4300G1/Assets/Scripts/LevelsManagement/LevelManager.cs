@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     private int numOfScenes;
     public float freezeTimeBetweenScenes = 2f;
-    private int currentSceneIndex = 0;
+    public int currentSceneIndex = 0;
     private List<GameObject> SceneList = new List<GameObject>();
     private Timer timer;
     // Start is called before the first frame update
