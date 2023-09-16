@@ -27,8 +27,6 @@ public class HandControl : MonoBehaviour
     {
         verticalMove = Input.GetAxisRaw("Vertical") * moveSpeed;
         horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        Debug.Log(verticalMove);
-        Debug.Log(horizontalMove);
     }
 
     void FixedUpdate()

@@ -8,6 +8,7 @@ public class DataManager : MonoBehaviour
     public static DataManager gameData {get; private set;}
 
     public static int chosenSceneIndex = 0;
+    public static GameObject itemChosen = null;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -29,6 +30,11 @@ public class DataManager : MonoBehaviour
         {
             chosenSceneIndex = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>().currentSceneIndex - 1;
             SceneManager.LoadScene("ItemSelectScene");
+        }
+
+        if(itemChosen != null)
+        {
+            Debug.Log(itemChosen.name);
         }
     }
 }
