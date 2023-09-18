@@ -18,6 +18,6 @@ public class ItemBehaviour : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        DataManager.itemChosen = this.gameObject;
+        DataManager.itemChosen = this.gameObject.name;
     }
 }

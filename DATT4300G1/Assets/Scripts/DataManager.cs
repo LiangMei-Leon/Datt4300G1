@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager gameData {get; private set;}
+    public static DataManager gameData { get; private set; }
 
     public static int chosenSceneIndex = 0;
-    public static GameObject itemChosen = null;
+    public static string itemChosen = "null";
     // Start is called before the first frame update
     private void Awake()
     {
@@ -16,6 +16,7 @@ public class DataManager : MonoBehaviour
         {
             gameData = this;
             DontDestroyOnLoad(gameObject);
+            
         }
         else
         {
@@ -32,9 +33,9 @@ public class DataManager : MonoBehaviour
             SceneManager.LoadScene("ItemSelectScene");
         }
 
-        if(itemChosen != null)
-        {
-            Debug.Log(itemChosen.name);
-        }
+        // if(itemChosen != null)
+        // {
+        //     Debug.Log(itemChosen.name);
+        // }
     }
 }
