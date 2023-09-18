@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimerISS : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class TimerISS : MonoBehaviour
         {
             freeze = true;
             time = 0;
+            SceneManager.LoadScene("ProposeScene");
         }
     }
 }
