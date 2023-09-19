@@ -58,6 +58,7 @@ public class LevelManager : MonoBehaviour
             currentSceneIndex++;
         }else{
             Debug.Log("No more regular scene left...");
+            yield return null;
         }
 
     }

@@ -21,8 +21,8 @@ public class Reset : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.R))
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.buildIndex);
+            //Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene("GameScene");
         }
     }
 }
