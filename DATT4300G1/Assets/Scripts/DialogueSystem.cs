@@ -5,7 +5,13 @@ using UnityEngine;
 [CreateAssetMenu]
 public class DialogueSystem : ScriptableObject
 {
-    [TextArea]
-    public string[] dialogue;
-    
+    public DialogueSection[] sections;
+
+    [System.Serializable]
+    public struct DialogueSection
+    {
+        [TextArea]
+        public string[] dialogue;
+        
+    }
 }

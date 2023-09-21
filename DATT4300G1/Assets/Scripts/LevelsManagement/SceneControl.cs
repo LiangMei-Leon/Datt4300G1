@@ -77,4 +77,14 @@ public class SceneControl : MonoBehaviour
             childBehaviour.RotateOut = true;
         }
     }
+
+    public void ForceStopMoveIn()
+    {
+        foreach (GameObject child in translationObjectsList)
+        {
+            SceneElements childBehaviour = child.GetComponent<SceneElements>();
+            childBehaviour.isMovingIn = false;
+            childBehaviour.MoveIn = false;
+        }
+    }
 }

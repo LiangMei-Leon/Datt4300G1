@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbb6fe72dea2d642b0a6ab7455d4143, type: 3}
   m_Name: GameDialogueSystem
   m_EditorClassIdentifier: 
-  dialogue: []
+  sections:
+  - dialogue:
+    - Hello World
+    - AAAAAAAAAAAAAAAAAA
+  - dialogue:
+    - second scene
+    - BBBBBBBBBBBBBBB
