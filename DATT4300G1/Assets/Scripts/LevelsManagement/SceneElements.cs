@@ -9,9 +9,8 @@ public class SceneElements : MonoBehaviour
     public bool MoveOut = false;
     public Transform destination;
     public float moveSpeed = 5.0f; // Adjust this speed as needed.
-    private bool isMoving = false;
-    private bool isMovingOut = false;
-
+    public bool isMovingIn = false;
+    public bool isMovingOut = false;
     public bool RotateIn = false;
     public bool RotateOut = false;
     public GameObject pivot;
@@ -31,8 +30,8 @@ public class SceneElements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(MoveIn){
-            isMoving = true;
+        if(MoveIn ){
+            isMovingIn = true;
             FadeIn();
         }
         if(MoveOut){
@@ -51,7 +50,7 @@ public class SceneElements : MonoBehaviour
 
     private void FadeIn()
     {
-        if (isMoving)
+        if (isMovingIn)
         {
             // Calculate the direction to the destination.
             Vector3 direction = (destination.position - transform.position).normalized;
@@ -67,7 +66,7 @@ public class SceneElements : MonoBehaviour
             else
             {
                 // The object has reached the destination, stop moving.
-                isMoving = false;
+                isMovingIn = false;
                 MoveIn = false;
             }
         }
