@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject dialogueUI;
     public float dialogueLastTime = 3f;
     private bool skipDialogue = false;
+    private bool dialogueplaying = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +73,8 @@ public class LevelManager : MonoBehaviour
             }
 
             //this is for preventing wired behaviour of the UI, see more in IEnumerator PlayDialogue(...)
-            skipDialogue = true;
+            if(dialogueplaying)
+                skipDialogue = true;
         }
     }
 
@@ -123,6 +125,7 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator PlayDialogue(DialogueSystem.DialogueSection section)
     {
+        dialogueplaying = true;
         foreach (string text in section.dialogue)
         {
             dialogueText.text = text;
@@ -136,6 +139,7 @@ public class LevelManager : MonoBehaviour
         //reset the bool back here after the old one is finished without closing the UI
         //so that if the player don't skip the new one (current one), the UI will close automatically after finishing all the dialogues.
         skipDialogue = false;
+        dialogueplaying = false;
         yield return null;
     }
 }

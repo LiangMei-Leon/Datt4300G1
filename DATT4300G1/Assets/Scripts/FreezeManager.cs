@@ -20,7 +20,7 @@ public class FreezeManager : MonoBehaviour
 
     void NoteDone()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             note.SetActive(false);
             PlayCountDown();

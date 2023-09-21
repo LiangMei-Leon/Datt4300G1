@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Countdown : MonoBehaviour
 {
+    private LevelManager levelManager;
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 0;
+        if(GameObject.FindWithTag("LevelManager") != null)
+        {
+            levelManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+        }
     }
 
     // Update is called once per frame
@@ -20,5 +25,6 @@ public class Countdown : MonoBehaviour
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
+        levelManager.StartCoroutine(levelManager.NextScene());
     }
 }
