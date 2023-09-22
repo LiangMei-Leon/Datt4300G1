@@ -22,8 +22,9 @@ public class FinalSceneControl : MonoBehaviour
     private IEnumerator SceneStart()
     {
         yield return new WaitForSeconds(interval1);
-        scoreboard.SetActive(true);
+        //play vfx
         yield return new WaitForSeconds(interval2);
+        scoreboard.SetActive(true);
         
         yield return null;
     }
