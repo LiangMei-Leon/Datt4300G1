@@ -16,7 +16,6 @@ public class DataManager : MonoBehaviour
         {
             gameData = this;
             DontDestroyOnLoad(gameObject);
-            
         }
         else
         {
