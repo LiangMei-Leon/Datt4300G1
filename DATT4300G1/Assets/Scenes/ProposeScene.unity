@@ -1697,6 +1697,7 @@ MonoBehaviour:
   scoreboard: {fileID: 1824614950}
   interval1: 1
   interval2: 3
+  dialogueText: {fileID: 552144949}
 --- !u!114 &1238860703
 MonoBehaviour:
   m_ObjectHideFlags: 0

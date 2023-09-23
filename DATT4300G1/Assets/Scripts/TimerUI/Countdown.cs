@@ -5,6 +5,7 @@ using UnityEngine;
 public class Countdown : MonoBehaviour
 {
     private LevelManager levelManager;
+    public GameObject ui;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class Countdown : MonoBehaviour
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
+        ui.SetActive(true);
         levelManager.StartCoroutine(levelManager.NextScene());
     }
 }
