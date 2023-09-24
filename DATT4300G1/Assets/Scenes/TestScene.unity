@@ -1329,7 +1329,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &839300261
@@ -1694,7 +1694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f982b56d943a47b4ca20b3ccc1b45a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTime: 10
+  duration: 10
+  freeze: 0
 --- !u!1 &1164507827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,7 +1879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1314338108
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2011,6 +2012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a307bd104a55b74aac8989bd58a5d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
 --- !u!1 &1376581938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,7 +2736,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 0.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
