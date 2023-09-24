@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class SceneElements : MonoBehaviour
 {
@@ -18,6 +19,14 @@ public class SceneElements : MonoBehaviour
     public float rotationTime = 2f;
     private bool rotating = false;
 
+    public bool hasLight = false;
+    private Light2D light2D;
+    public float startRadius = 1.0f;
+    public float endRadius = 20.0f;
+    public float animationDuration = 10.0f;
+    private float startTime;
+    private bool isAnimating = false;
+    private bool forwardAnimation = false;
 
     void Start()
     {
@@ -25,17 +34,25 @@ public class SceneElements : MonoBehaviour
         if(pivot != null){
             pivotTransform = pivot.transform.position;
         }
+        if(hasLight)
+        {
+            light2D = this.gameObject.GetComponent<Light2D>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(MoveIn ){
+        if(MoveIn){
             isMovingIn = true;
+            if(hasLight && !isAnimating)
+                StartAnimation();
             FadeIn();
         }
         if(MoveOut){
             isMovingOut = true;
+            if(hasLight && !isAnimating)
+                StartAnimation();
             FadeOut();
         }
         if(RotateIn && !rotating){
@@ -45,6 +62,10 @@ public class SceneElements : MonoBehaviour
         if(RotateOut && !rotating){
             RotateOut = false;
             StartCoroutine(Rotate(this.transform, pivotTransform, Vector3.right, 90, rotationTime));
+        }
+        if (isAnimating)
+        {
+            AnimateLight();
         }
     }
 
@@ -124,5 +145,34 @@ public class SceneElements : MonoBehaviour
         Transform.rotation = endRotation;
         Transform.position = endPosition;
         rotating = false;
+    }
+
+    private void StartAnimation()
+    {
+        startTime = Time.time;
+        isAnimating = true;
+        forwardAnimation = !forwardAnimation;
+    }
+
+    private void AnimateLight()
+    {
+        float elapsed = Time.time - startTime;
+        float newRadius;
+        if (elapsed <= animationDuration)
+        {
+            if (forwardAnimation)
+            {
+                newRadius = Mathf.Lerp(startRadius, endRadius, elapsed / animationDuration);
+            }
+            else
+            {
+                newRadius = Mathf.Lerp(endRadius, startRadius, elapsed / animationDuration);
+            }
+            light2D.pointLightOuterRadius = newRadius;
+        }
+        else
+        {
+            isAnimating = false;
+        }
     }
 }
