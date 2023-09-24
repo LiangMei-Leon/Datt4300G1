@@ -9,10 +9,13 @@ public class FloatingAnimation : MonoBehaviour
 
     private Vector3 initialPosition;
     private float time = 0.0f;
-
+    public bool isWave = false;
+    public GameObject altinitialPosition;
     void Start()
     {
         initialPosition = transform.position;
+        if(isWave)
+            initialPosition = altinitialPosition.transform.position;
     }
 
     void Update()
