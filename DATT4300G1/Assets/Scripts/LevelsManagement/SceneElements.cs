@@ -64,6 +64,7 @@ public class SceneElements : MonoBehaviour
                 }
             isMovingOut = true;
             if (hasLight && !isAnimating)
+
                 StartAnimation();
             FadeOut();
         }
