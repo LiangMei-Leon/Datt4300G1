@@ -23,58 +23,43 @@ public class SceneElements : MonoBehaviour
     private Light2D light2D;
     public float startRadius = 1.0f;
     public float endRadius = 20.0f;
-    public float animationDuration = 2.0f;
+    public float animationDuration = 10.0f;
     private float startTime;
     private bool isAnimating = false;
     private bool forwardAnimation = false;
-    public bool isWave = false;
-    private FloatingAnimation fa;
+
     void Start()
     {
         originalLoaction = (Vector3)this.transform.position;
-        if (pivot != null)
-        {
+        if(pivot != null){
             pivotTransform = pivot.transform.position;
         }
-        if (hasLight)
+        if(hasLight)
         {
             light2D = this.gameObject.GetComponent<Light2D>();
-        }
-        if (isWave)
-        {
-            fa = this.gameObject.GetComponent<FloatingAnimation>();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (MoveIn)
-        {
+        if(MoveIn){
             isMovingIn = true;
-            if (hasLight && !isAnimating)
+            if(hasLight && !isAnimating)
                 StartAnimation();
             FadeIn();
         }
-        if (MoveOut)
-        {
-            if (isWave)
-                {
-                    fa.enabled = false;
-                }
+        if(MoveOut){
             isMovingOut = true;
-            if (hasLight && !isAnimating)
-
+            if(hasLight && !isAnimating)
                 StartAnimation();
             FadeOut();
         }
-        if (RotateIn && !rotating)
-        {
+        if(RotateIn && !rotating){
             RotateIn = false;
             StartCoroutine(Rotate(this.transform, pivotTransform, Vector3.right, -90, rotationTime));
         }
-        if (RotateOut && !rotating)
-        {
+        if(RotateOut && !rotating){
             RotateOut = false;
             StartCoroutine(Rotate(this.transform, pivotTransform, Vector3.right, 90, rotationTime));
         }
@@ -104,10 +89,6 @@ public class SceneElements : MonoBehaviour
                 // The object has reached the destination, stop moving.
                 isMovingIn = false;
                 MoveIn = false;
-                if (isWave)
-                {
-                    fa.enabled = true;
-                }
             }
         }
     }
@@ -141,7 +122,7 @@ public class SceneElements : MonoBehaviour
         if (rotating)
             yield return null;
         rotating = true;
-
+ 
         Quaternion startRotation = Transform.rotation;
         Vector3 startPosition = Transform.position;
 
@@ -153,7 +134,7 @@ public class SceneElements : MonoBehaviour
 
         Transform.rotation = startRotation;
         Transform.position = startPosition;
-
+ 
         float rate = degrees / totalTime;
         //Start Rotate
         for (float i = 0.0f; Mathf.Abs(i) < Mathf.Abs(degrees); i += Time.deltaTime * rate)
