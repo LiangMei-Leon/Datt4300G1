@@ -19,8 +19,8 @@ public class ItemShowcase : MonoBehaviour
 
         foreach (GameObject item in itemList)
         {
-            Debug.Log(item.name);
-            Debug.Log(DataManager.itemChosen);
+            //Debug.Log(item.name);
+            Debug.Log("choooooooose" + DataManager.itemChosen);
             if (DataManager.itemChosen != "null")
             {
                 if (DataManager.itemChosen == item.name)

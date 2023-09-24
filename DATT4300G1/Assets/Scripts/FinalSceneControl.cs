@@ -43,7 +43,7 @@ public class FinalSceneControl : MonoBehaviour
         }
         if(specialResult)
         {
-
+            
         }
         yield return new WaitForSeconds(interval2);
         scoreboard.SetActive(true);
