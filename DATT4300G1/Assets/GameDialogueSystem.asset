@@ -14,17 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sections:
   - dialogue:
-    - Hello World
-    - AAAAAAAAAAAAAAAAAA
+    - "You: It\u2019s so early, I can hardly stay awake!"
+    - 'She: I know what you mean, but the amusement park will be worth it, right?'
+    - 'You: Absolutely. Which ride are you most excited about?'
+    - "She: Ohh, the new roller coaster! It\u2019ll definitely wake us up too!"
+    - 'She: Though I hope the bus is on time, all this waiting is tiring me out already...'
   - dialogue:
-    - second scene
-    - BBBBBBBBBBBBBBB
+    - 'She: These lines are a nightmare!!!'
+    - "You: I know, it\u2019s crazy! Try to think of the rides we\u2019ll enjoy once
+      we\u2019re in. It\u2019ll be fun!"
+    - 'She: FUN? Chaos and rowdy kids are not really my definition of fun!'
+    - "You: We\u2019re almost at the ticket booth, just a little while longer!"
   - dialogue:
-    - third scene
-    - BBBBBBBBBBBBBBB
+    - 'You: Here we go, the big moment!'
+    - "You: Hold on tightly, It\u2019s about to get a lot crazier. There\u2019s a
+      loop too!"
+    - "She: A LOOP? I can\u2019t believe we\u2019re doing this right now!"
+    - 'You: Enjoy the view on the climb, look around, and take it all in while it
+      lasts!'
   - dialogue:
-    - forth scene
-    - BBBBBBBBBBBBBBB
+    - 'She: Ugh, I can''t believe we have to sit next to this gross trash can.'
+    - 'You: Yeah, it''s not ideal, but at least we have our favorite food.'
+    - 'She: True, this burger is great. It''s just the smell from the trash can that''s
+      bothering me, ew.'
+    - 'You: I will keep the flies away from you!'
   - dialogue:
     - fifth scene
     - BBBBBBBBBBBBBBB

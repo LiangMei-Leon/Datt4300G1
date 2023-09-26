@@ -18,9 +18,12 @@ public class LevelManager : MonoBehaviour
     public float dialogueLastTime = 3f;
     private bool skipDialogue = false;
     private bool dialogueplaying = false;
+    private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+
         timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
 
         Transform[] childArray = this.GetComponentsInChildren<Transform>(true);
@@ -52,6 +55,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown("f"))
         {
+            audioManager.Play("Skip");
             timer.skipSlider(1f);
             /*  
                 this is for forcing translation object to stop continue moving in
