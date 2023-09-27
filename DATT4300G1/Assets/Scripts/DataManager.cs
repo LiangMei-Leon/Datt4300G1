@@ -26,7 +26,7 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && SceneManager.GetActiveScene().name == "GameScene")
         {
             chosenSceneIndex = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>().currentSceneIndex - 1;
             SceneManager.LoadScene("ItemSelectScene");

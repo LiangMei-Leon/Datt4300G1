@@ -39,11 +39,24 @@ MonoBehaviour:
       bothering me, ew.'
     - 'You: I will keep the flies away from you!'
   - dialogue:
-    - fifth scene
-    - BBBBBBBBBBBBBBB
+    - 'She: I seriously can''t see anything in here. This is terrifying!'
+    - 'You: It''s supposed to be scary! Just hold onto my hand. We''ll get through
+      this.'
+    - 'She: Okay, I trust you. But if anything jumps out, I might scream and pass
+      out.'
+    - 'You: Don''t worry, I''ll scream louder! We''re in this together.'
   - dialogue:
-    - sixth scene
-    - BBBBBBBBBBBBBBB
+    - 'She: This lake is so peaceful. I love it here.'
+    - 'You: It''s gorgeous. Look at those mountains in the distance.'
+    - 'She: Wait, what''s that? Are those kids with squirt guns?'
+    - 'You: (Laughs) Oh, it''s on! Let''s see who''s the better shot.'
+    - 'She: Oh no, I am soaked! ugh.'
   - dialogue:
-    - seventh scene
-    - BBBBBBBBBBBBBBB
+    - 'You: Wow, these fireworks are incredible!'
+    - 'She: Absolutely, it''s the perfect way to end our day at the amusement park.'
+    - 'You: I''m glad we stuck it out through all the chaos and lines.'
+    - "She: Me too. The roller coasters, the view, and now this fireworks show \u2013
+      it was all worth it."
+    - 'You: Look at those colours! It''s like a painting in the sky.'
+    - 'She: I''m going to remember this day for a long time.'
+    - 'You: Same here. It wouldn''t have been the same without you.'

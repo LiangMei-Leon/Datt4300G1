@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.VFX;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public int currentSceneIndex = 0;
     private List<GameObject> sceneList = new List<GameObject>();
     private Timer timer;
+    private bool skipUsed = false;
     public GameObject backgrounds;
     private List<GameObject> backgroundList = new List<GameObject>();
     public DialogueSystem dialogues;
@@ -19,6 +21,15 @@ public class LevelManager : MonoBehaviour
     private bool skipDialogue = false;
     private bool dialogueplaying = false;
     private AudioManager audioManager;
+    public VisualEffect firework;
+    private Coroutine currentCoroutine;
+    void Awake()
+    {
+        if (firework != null)
+        {
+            firework.Stop();
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -53,8 +64,9 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown("f") && !skipUsed)
         {
+            skipUsed = true;
             audioManager.Play("Skip");
             timer.skipSlider(1f);
             /*  
@@ -75,15 +87,12 @@ public class LevelManager : MonoBehaviour
                 SceneControl sceneControl = sceneList[currentSceneIndex - 1].GetComponent<SceneControl>();
                 sceneControl.ForceStopMoveIn();
             }
-
-            //this is for preventing wired behaviour of the UI, see more in IEnumerator PlayDialogue(...)
-            if(dialogueplaying)
-                skipDialogue = true;
         }
     }
 
     public IEnumerator NextScene()
     {
+        skipUsed = false;
         if (currentSceneIndex < numOfScenes)
         {
             if (currentSceneIndex != 0)
@@ -101,7 +110,7 @@ public class LevelManager : MonoBehaviour
             currentSceneIndex++;
             //start dialogue of this scene
             dialogueUI.SetActive(true);
-            StartCoroutine(PlayDialogue(dialogues.sections[currentSceneIndex - 1]));
+            StartNewDialogue(dialogues.sections[currentSceneIndex - 1]);
         }
         else
         {
@@ -113,6 +122,15 @@ public class LevelManager : MonoBehaviour
     {
         SceneControl sceneControl = sceneList[index].GetComponent<SceneControl>();
         sceneControl.StartScene();
+        if (index == 6)
+        {
+            if (firework != null)
+            {
+                // Play the VFX
+                firework.Play();
+            }
+        }
+
     }
 
     public void CloseScene(int index)
@@ -129,21 +147,23 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator PlayDialogue(DialogueSystem.DialogueSection section)
     {
-        dialogueplaying = true;
         foreach (string text in section.dialogue)
         {
             dialogueText.text = text;
             yield return new WaitForSeconds(dialogueLastTime);
         }
-        //if the player press F then prevent the dialogueUI being closed
-        //since although the new PlayDialogue starts, the previous PlayDialogue is still running and it will eventually
-        //call the setactive(false) if we didn't prevent it
-        if (!skipDialogue)
-            dialogueUI.SetActive(false);
-        //reset the bool back here after the old one is finished without closing the UI
-        //so that if the player don't skip the new one (current one), the UI will close automatically after finishing all the dialogues.
-        skipDialogue = false;
-        dialogueplaying = false;
+        dialogueUI.SetActive(false);
         yield return null;
+    }
+    public void StartNewDialogue(DialogueSystem.DialogueSection section)
+    {
+        // Stop the previous coroutine if it exists.
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
+        // Start the new coroutine and store its reference.
+        currentCoroutine = StartCoroutine(PlayDialogue(section));
     }
 }
