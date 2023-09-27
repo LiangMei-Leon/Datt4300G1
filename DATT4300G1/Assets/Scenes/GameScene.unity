@@ -4787,7 +4787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5d011256f775944b1d6feed486d06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myDuration: 25
+  myDuration: 32
 --- !u!1 &1135860032
 GameObject:
   m_ObjectHideFlags: 0
@@ -8366,7 +8366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5d011256f775944b1d6feed486d06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myDuration: 25
+  myDuration: 20
 --- !u!1 &1931564964
 GameObject:
   m_ObjectHideFlags: 0
