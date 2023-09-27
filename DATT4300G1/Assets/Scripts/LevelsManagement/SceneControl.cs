@@ -7,10 +7,13 @@ public class SceneControl : MonoBehaviour
     public float myDuration = 30f;
     private List<GameObject> translationObjectsList = new List<GameObject>();
     private List<GameObject> rotationObjectsList = new List<GameObject>();
-
+    public string myMusic = "null";
+    private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+
         Transform translationSource = this.transform.GetChild(0).GetChild(0);
         Transform[] translationchildArray = translationSource.GetComponentsInChildren<Transform>();
         Transform rotationSource = this.transform.GetChild(1).GetChild(0);
@@ -45,6 +48,11 @@ public class SceneControl : MonoBehaviour
 
     public void StartScene()
     {
+        if(myMusic != "null")
+        {
+            audioManager.Play(myMusic);
+        }
+        
         if (translationObjectsList.Count != 0)
         {
             foreach (GameObject child in translationObjectsList)
@@ -66,6 +74,11 @@ public class SceneControl : MonoBehaviour
 
     public void EndScene()
     {
+        if(myMusic != "null")
+        {
+            audioManager.Stop(myMusic);
+        }
+
         foreach (GameObject child in translationObjectsList)
         {
             SceneElements childBehaviour = child.GetComponent<SceneElements>();

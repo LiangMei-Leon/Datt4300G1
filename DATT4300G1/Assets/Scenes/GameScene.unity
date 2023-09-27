@@ -1186,6 +1186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDuration: 20
+  myMusic: null
 --- !u!4 &172129532
 Transform:
   m_ObjectHideFlags: 0
@@ -3646,6 +3647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDuration: 20
+  myMusic: null
 --- !u!1 &873689581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3993,6 +3995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDuration: 20
+  myMusic: null
 --- !u!1 &986030036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4788,6 +4791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDuration: 32
+  myMusic: FireworkScene
 --- !u!1 &1135860032
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,6 +5001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDuration: 20
+  myMusic: SwanBoatScene
 --- !u!1 &1192429159
 GameObject:
   m_ObjectHideFlags: 0
@@ -6952,6 +6957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDuration: 25
+  myMusic: null
 --- !u!1 &1484950769
 GameObject:
   m_ObjectHideFlags: 0
@@ -6987,6 +6993,55 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    group: {fileID: 0}
+    source: {fileID: 0}
+  - name: BG
+    clip: {fileID: 8300000, guid: 9851a26e9d2a6ad4692f649ab3418a39, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 1
+    group: {fileID: 0}
+    source: {fileID: 0}
+  - name: BG2
+    clip: {fileID: 8300000, guid: f19a3511f8be8cf4d8b21fa0e012a45a, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 1
+    group: {fileID: 0}
+    source: {fileID: 0}
+  - name: Goodresult
+    clip: {fileID: 8300000, guid: e82ab96d533dfc9419853ef9fbe2ddb2, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 1
+    group: {fileID: 0}
+    source: {fileID: 0}
+  - name: Badresult
+    clip: {fileID: 8300000, guid: 5b98f7db877595d4199431c3f773d041, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 1
+    group: {fileID: 0}
+    source: {fileID: 0}
+  - name: FireworkScene
+    clip: {fileID: 8300000, guid: e1171aed58b2ebb44aa4dfd3b34d0d49, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 1
+    group: {fileID: 0}
+    source: {fileID: 0}
+  - name: HauntedHouseScene
+    clip: {fileID: 8300000, guid: 6e080546db9a95040a0752e4c6e7df48, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    group: {fileID: 0}
+    source: {fileID: 0}
+  - name: SwanBoatScene
+    clip: {fileID: 8300000, guid: 6085c50393075be4ca5fcee0391af5b5, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
     group: {fileID: 0}
     source: {fileID: 0}
 --- !u!4 &1484950771
@@ -8367,6 +8422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDuration: 20
+  myMusic: HauntedHouseScene
 --- !u!1 &1931564964
 GameObject:
   m_ObjectHideFlags: 0
