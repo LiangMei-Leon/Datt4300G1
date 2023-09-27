@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.VFX;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -59,6 +60,19 @@ public class LevelManager : MonoBehaviour
             }
         }
         numOfScenes = sceneList.Count;
+        audioManager.Play("BG");
+        if(audioManager.checkIsPlaying("FireworkScene"))
+        {
+            audioManager.Stop("FireworkScene");
+        }
+        if(audioManager.checkIsPlaying("Goodresult"))
+        {
+            audioManager.Stop("Goodresult");
+        }
+        if(audioManager.checkIsPlaying("Badresult"))
+        {
+            audioManager.Stop("Badresult");
+        }
     }
 
     // Update is called once per frame
@@ -114,7 +128,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("No more regular scene left...");
+            SceneManager.LoadScene("GameScene");
             yield return null;
         }
     }
