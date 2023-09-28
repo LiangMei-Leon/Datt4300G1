@@ -6,10 +6,16 @@ public class FreezeManager : MonoBehaviour
 {
     public GameObject note;
     public GameObject countdown;
+
+    private LevelManager levelManager;
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 0f;
+        if(GameObject.FindWithTag("LevelManager") != null)
+        {
+            levelManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+        }
     }
 
     // Update is called once per frame

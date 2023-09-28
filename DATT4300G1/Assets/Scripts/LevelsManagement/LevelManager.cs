@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public int currentSceneIndex = 0;
     private List<GameObject> sceneList = new List<GameObject>();
     private Timer timer;
-    private bool skipUsed = false;
+    public bool skipUsed = true;
     public GameObject backgrounds;
     private List<GameObject> backgroundList = new List<GameObject>();
     public DialogueSystem dialogues;
@@ -106,13 +106,13 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator NextScene()
     {
-        skipUsed = false;
         if (currentSceneIndex < numOfScenes)
         {
             if (currentSceneIndex != 0)
             {
                 CloseScene(currentSceneIndex - 1);
                 yield return new WaitForSeconds(freezeTimeBetweenScenes);
+                skipUsed = false;
                 backgroundList[currentSceneIndex - 1].SetActive(false);
             }
 
