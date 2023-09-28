@@ -27,6 +27,7 @@ public class Countdown : MonoBehaviour
         gameObject.SetActive(false);
         Time.timeScale = 1;
         ui.SetActive(true);
+        levelManager.skipUsed = false;
         levelManager.StartCoroutine(levelManager.NextScene());
     }
 }
